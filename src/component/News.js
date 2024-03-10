@@ -275,15 +275,12 @@ articles : this.articles
       <div className="container my-3">
         <h1>Sandesh </h1>
        <div className="row">
-      <div className="col-md-4">
-        <NewsItem title="mytitle" description="mydes" imageurl="https://sportshub.cbsistatic.com/i/r/2024/02/21/ffd65df6-aa20-47ce-9375-f6fe50434c07/thumbnail/1200x675/90b60e266ab4b173b7094963bedd37c0/chris-jones-g.jpg" urlid=""/>
-      </div>  
-      <div className="col-md-4">
-        <NewsItem title="mytitle" description="mydes" imageurl="https://sportshub.cbsistatic.com/i/r/2024/02/21/ffd65df6-aa20-47ce-9375-f6fe50434c07/thumbnail/1200x675/90b60e266ab4b173b7094963bedd37c0/chris-jones-g.jpg"/>
-      </div>  
-      <div className="col-md-4">
-        <NewsItem title="mytitle" description="mydes" imageurl="https://sportshub.cbsistatic.com/i/r/2024/02/21/ffd65df6-aa20-47ce-9375-f6fe50434c07/thumbnail/1200x675/90b60e266ab4b173b7094963bedd37c0/chris-jones-g.jpg"/>
-      </div>  
+        {this.state.articles.map((element)=>{
+        return <div key="url" className="col-md-4">
+        <NewsItem  title={element.title} description={element.description} imageurl={element.urlToImage} urlId={element.url}/>
+      </div>  })}
+      
+    
        </div>
       </div>
     )
