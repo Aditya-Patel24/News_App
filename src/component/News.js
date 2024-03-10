@@ -6,6 +6,7 @@ export class News extends Component {
     return (
       <div>
         <NewsItem/>
+        console.log("Jai Shree Ram Mahadev")
       </div>
     )
   }
