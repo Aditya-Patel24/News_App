@@ -273,14 +273,12 @@ articles : this.articles
   render() {
     return (
       <div className="container my-3">
-        <h1>Sandesh </h1>
+        <h1>Sandesh</h1>
        <div className="row">
         {this.state.articles.map((element)=>{
         return <div key="url" className="col-md-4">
         <NewsItem  title={element.title} description={element.description} imageurl={element.urlToImage} urlId={element.url}/>
-      </div>  })}
-      
-    
+      </div>  })}  
        </div>
       </div>
     )
