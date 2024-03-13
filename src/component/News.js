@@ -43,8 +43,8 @@ this.setState({
   }}
   render() {
     return (
-      <div className="container my-3">
-        <h1>Sandesh</h1>
+      <div className="container my-3 ">
+        <h1 className=" text-center ">Sandesh</h1>
        <div className="row">
         {
         this.state.articles.map((element, index)=>{
@@ -54,7 +54,7 @@ this.setState({
        </div>
   <div className=" d-flex justify-content-between" role="group" aria-label="Basic mixed styles example">
   <button disabled={this.setState.page<=1} type="button" className="btn btn-danger" onClick={this.handleOnPrev}>←Previous</button>
-  <button type="button" className="btn btn-success" onClick={this.handleOnNext}>Next→</button>
+  <button disabled={Math.ceil(this.state.page + 1>this.state.totalResults/21)} type="button" className="btn btn-success" onClick={this.handleOnNext}>Next→</button>
    </div>   
 </div>
     )
