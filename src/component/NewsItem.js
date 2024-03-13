@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-
 export class NewsItem extends Component {
-  render() {
+  render()
+  {
     let {title, description, imageurl, urlId} = this.props;
     return (
       <div className="my-3">
@@ -17,5 +17,4 @@ export class NewsItem extends Component {
     )
   }
 }
-
 export default NewsItem
