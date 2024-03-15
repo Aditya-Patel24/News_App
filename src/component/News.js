@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import NewsItem from './NewsItem'
-import Spinner from './Spinner'
+import Spinner from './Spinner';
 
 export class News extends Component {
   constructor(){
@@ -13,34 +13,41 @@ Loading:false
   }
   async componentDidMount(){
     let url = `https://newsapi.org/v2/everything?q=tesla&from=2024-02-15&sortBy=publishedAt&apiKey=6f85f05fc3bc4327aafba7c1e0f7041d&page=1&pageSize=${this.props.pageSize}`;
+    this.setState({loading:true});
     let data = await fetch(url);
     let parseData = await data.json()
-    this.setState({articles : parseData.articles})
+    this.setState({
+      articles : parseData.articles,
+      loading:false
+    })
   }
 handleOnPrev=async ()=>{
   let url = `https://newsapi.org/v2/everything?q=tesla&from=2024-02-15&sortBy=publishedAt&apiKey=6f85f05fc3bc4327aafba7c1e0f7041d&pageSize=${this.props.pageSize}`;
+  this.setState({loading:true});
   let data = await fetch(url);
   let parseData = await data.json();
   
 this.setState({
 page : this.state.page - 1,
-articles : parseData.articles
+articles : parseData.articles,
+loading:false
 })
   }
   handleOnNext=async ()=>{
     console.log("next");
-    if(Math.ceil(this.state.page + 1>this.state.totalResults/this.props.pageSize))
+    if(!(Math.ceil(this.state.page + 1>this.state.totalResults/this.props.pageSize)))
     {
       
-    }
-  else { let url = `https://newsapi.org/v2/everything?q=tesla&from=2024-02-15&sortBy=publishedAt&apiKey=6f85f05fc3bc4327aafba7c1e0f7041d
+     let url = `https://newsapi.org/v2/everything?q=tesla&from=2024-02-15&sortBy=publishedAt&apiKey=6f85f05fc3bc4327aafba7c1e0f7041d
 &page=${this.state.page + 1}&pageSize=${this.props.pageSize}`;
+this.setState({loading:true});
     let data = await fetch(url);
     let parseData = await data.json();
     
 this.setState({
   page : this.state.page + 1,
-  articles : parseData.articles
+  articles : parseData.articles,
+  loading:false
 })
   }}
   render() {
@@ -48,10 +55,10 @@ this.setState({
     return (
       <div className="container my-3 bg-light ">
         <h1 className=" text-center bg-primary text-light">Sandesh</h1>
-        <Spinner/>
+        {this.state.loading && <Spinner/>}
        <div className="row">
         {
-       articles && articles.map((element, index)=>{
+       !this.state.loading && articles && articles.map((element, index)=>{
         return <div key={element.url} className="col-md-4">
         <NewsItem  title={element.title} description={element.description} imageurl={element.urlToImage} urlId={element.url}/>
       </div>  })}
