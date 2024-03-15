@@ -53,7 +53,7 @@ this.setState({
   render() {
     const { articles } = this.state;
     return (
-      <div className="container my-3 bg-light ">
+      <div className="container my-3 ">
         <h1 className=" text-center bg-primary text-light">Sandesh</h1>
         {this.state.loading && <Spinner/>}
        <div className="row">
